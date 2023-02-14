@@ -405,7 +405,7 @@ store:
       dbAddr: 127.0.0.1:3306
       maxOpenConns: 300
       maxIdleConns: 50
-      connMaxLifetime: 300 # Unit second
+      connMaxLifetime: 10 # Unit second
       txIsolationLevel: 2 #LevelReadCommitted
 # 插件配置
 plugin:

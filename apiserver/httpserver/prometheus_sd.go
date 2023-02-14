@@ -19,6 +19,7 @@ package httpserver
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/emicklei/go-restful/v3"
 
@@ -41,5 +42,6 @@ func (h *HTTPServer) addPrometheusDefaultAccess(ws *restful.WebService) {
 func (h *HTTPServer) GetPrometheusClients(req *restful.Request, rsp *restful.Response) {
 	queryParams := httpcommon.ParseQueryParams(req)
 	ret := h.namingServer.GetPrometheusTargets(context.Background(), queryParams)
+	fmt.Printf("【debug1】|%d|%+v\n",ret.Code,ret.Response[0].Targets)
 	_ = rsp.WriteAsJson(ret.Response)
 }

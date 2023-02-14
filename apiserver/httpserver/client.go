@@ -18,6 +18,8 @@
 package httpserver
 
 import (
+	"fmt"
+
 	"github.com/emicklei/go-restful/v3"
 
 	httpcommon "github.com/polarismesh/polaris/apiserver/httpserver/http"
@@ -38,6 +40,7 @@ func (h *HTTPServer) GetReportClients(req *restful.Request, rsp *restful.Respons
 	queryParams := httpcommon.ParseQueryParams(req)
 	ctx := handler.ParseHeaderContext()
 	ret := h.namingServer.GetPrometheusTargets(ctx, queryParams)
+	fmt.Printf("【debug】|%d|%+v",ret.Code,ret.Response[0].Targets)
 
 	_ = rsp.WriteAsJson(ret)
 }
